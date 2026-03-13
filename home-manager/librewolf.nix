@@ -9,6 +9,7 @@
             "privacy.clearOnShutdown.history" = false;
             "privacy.clearOnShutdown.cookies" = false;
             "network.cookie.lifetimePolicy" = 0;
+            # default theme : everforest | cant get stylix to work
             "extensions.activeThemeID" = "{c0f86627-5243-4bf4-a522-a41ed12f1737}";
         };
         profiles.YOUR_USERNAME = {

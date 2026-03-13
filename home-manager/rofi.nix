@@ -8,6 +8,7 @@
         extraConfig = {
             show-icons = true;
             font = "Droid Sans Mono 16";
+            element-icon = "2ch";
         };
         theme = lib.mkMerge [
             {
@@ -17,7 +18,6 @@
                     spacing = 10;
                     padding = 8;
                     border-radius = 5;
-                    # border-radius = "0px 0px 3px 3px";
                 };
                 element = {
                     padding = 3;

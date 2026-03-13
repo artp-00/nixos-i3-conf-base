@@ -1,8 +1,7 @@
 {
-  description = "nixos-i3-basic-conf";
+  description = "nixos-base-i3-config";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     home-manager = {
@@ -12,7 +11,11 @@
 
     stylix = {
         url = "github:nix-community/stylix";
-        # Optional: pin nixpkgs version to match Stylix
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+        url = "github:nix-community/nixvim/nixos-25.11";
         inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -22,6 +25,8 @@
     nixpkgs,
     home-manager,
     stylix,
+    stm32cubeide,
+    nixvim,
     ...
   } @ inputs: let
   in {
@@ -33,6 +38,7 @@
         specialArgs = {inherit inputs;};
         # > Our main nixos configuration file <
         modules = [
+          nixvim.nixosModules.default
           ./configuration.nix
         ];
       };
@@ -41,7 +47,7 @@
     # # Standalone home-manager configuration entrypoint
     # # Available through 'home-manager --flake .#your-username@your-hostname'
     # homeConfigurations = {
-    #   "user@user-nixos" = home-manager.lib.homeManagerConfiguration {
+    #   "YOUR_USERNAME@YOUR_HOSTNAME" = home-manager.lib.homeManagerConfiguration {
     #     # Home-manager requires 'pkgs' instance
     #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure 
     #     extraSpecialArgs = {inherit inputs;};

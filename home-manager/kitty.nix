@@ -11,9 +11,7 @@
             mouse_hide_wait = "-1.0";
             window_padding_width = 10;
             scrollback_lines = 10000;
-
             cursor_trail = 1;
-            cursor = "#ff0000"; # TODO: make it work
         };
     };
 }

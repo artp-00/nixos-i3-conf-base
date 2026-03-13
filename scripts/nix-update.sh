@@ -9,7 +9,7 @@ sleep 2
 
 sudo git -C /etc/nixos add /etc/nixos
 
-if sudo nixos-rebuild switch --flake /etc/nixos#dg; then
+if sudo nixos-rebuild switch --flake /etc/nixos#YOUR_USERNAME; then
     echo -e "${C_SPRINGGREEN3}=====   NIX REBUILD OK   =====${NO_FORMAT}"
     sudo git -C /etc/nixos commit -m "chore: nix rebuild script auto-generated message"
     sudo git -C /etc/nixos push

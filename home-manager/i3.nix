@@ -11,7 +11,6 @@ in {
             terminal = "kitty";
             modifier = mod;
             menu = "rofi -show drun -display-drun ' 󰨊 '";
-            # menu = "ulauncher-toggle";
             defaultWorkspace = "1";
             focus = {
                 followMouse = false;
@@ -34,7 +33,6 @@ in {
                 titlebar = false;
             };
             keybindings = lib.mkOptionDefault {
-                # "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
                 "${mod}+Shift+s" = "exec ${pkgs.flameshot}/bin/flameshot gui";
                 "${mod}+Shift+g" = "exec ${pkgs.i3lock}/bin/i3lock"; # TODO: i3lock config
 
@@ -61,7 +59,6 @@ in {
 
             startup = [
                 { command = "autotiling-rs"; always = true; }
-                # { command = "ulauncher --hide-window"; always = true; }
                 { command = "i3-rounded"; always = true; }
                 { command = "i3-msg workspace 1"; always = true; notification = false; }
             ];
@@ -73,6 +70,7 @@ in {
             for_window [class="^.*"] border pixel 0";
         '';
     };
+
     # BAR
     xsession.windowManager.i3.config.bars = [
         {
@@ -86,25 +84,30 @@ in {
                 size = 10.0;
             };
             colors = {
-                background = "#282828";
+                background = "#232a2e";
                 statusline = "#ebdbb2";
-                separator = "#666666";
+                separator = "#3d484d";
                 focusedWorkspace = {
-                    border = "#83a598";
-                    background = "#458588";
-                    text = "#ebdbb2";
+                    border = "#a7c080";
+                    background = "#a7c080";
+                    text = "#ffffff";
                 };
                 activeWorkspace = {
-                    border = "#3c3836";
-                    background = "#504945";
-                    text = "#ebdbb2";
+                    border = "#3d484d";
+                    background = "#3d484d";
+                    text = "#d3c6aa";
                 };
                 inactiveWorkspace = {
-                    border = "#3c3836";
-                    background = "#3c3836";
-                    text = "#928374";
+                    border = "#3d484d";
+                    background = "#3d484d";
+                    text = "#d3c6aa";
                 };
             };
+            extraConfig = ''
+                padding 2px 2px 14px 14px
+                workspace_min_width 24
+                separator_symbol " | "
+            '';
         }
     ];
 }

@@ -1,13 +1,27 @@
 { config, lib, pkgs, ... }:
 
+let
+    openjdk_pkg = pkgs.jdk21;
+in
 {
     programs.vscode = {
         enable = true;
-        # move to profiles.default.extensions
         profiles.default.extensions = with pkgs.vscode-extensions; [
             vscodevim.vim
             visualstudioexptteam.vscodeintellicode
             waderyan.gitblame
+            # nix
+            bbenoist.nix
+            # python
+            ms-python.python
+            ms-python.debugpy
+            ms-python.vscode-pylance
+            charliermarsh.ruff
+            # js / webdev
+            bradlc.vscode-tailwindcss
+            # java
+            redhat.java
+            vscjava.vscode-java-pack
         ];
         profiles.default.userSettings = {
             "editor.cursorStyle" = "block";
@@ -16,12 +30,30 @@
             "editor.cursorSmoothCaretAnimation" = "on";
             "workbench.layoutControl.enabled" = false;
             "workbench.navigationControl.enabled" = false;
-            "chat.commandCenter.enabled" = false;
             "window.commandCenter" = false;
             "editor.autoIndent" = "full";
             "breadcrumbs.enabled" = false;
             "breadcrumbs.filePath" = "last";
             "breadcrumbs.symbolPath" = "on";
+            "chat.commandCenter.enabled" = false;
+            "chat.agent.enabled" = false;
+
+            # python
+            "[python]" = {
+                "editor.formatOnSave" = false;
+                "editor.defaultFormatter" = "charliermarsh.ruff";
+            };
+            "python.languageServer" = "Pylance";
+            "python.analysis.typeCheckingMode" = "basic";
+
+            "files.exclude" = {
+                # python
+                "**/__pycache__" = true;
+                "**/*.pyc" = true;
+            };
+            "ruff.nativeServer" = "auto";
+
+            "java.jdt.ls.java.home" = "${openjdk_pkg}/lib/openjdk";
         };
         # move to profiles.default.keybindings
         profiles.default.keybindings = [
@@ -80,5 +112,11 @@
                 command = "workbench.action.files.openLocalFolder";
             }
         ];
+    };
+    programs.ruff = {
+        enable = true;
+        settings = {
+            line-length = 100;
+        };
     };
 }

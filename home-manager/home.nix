@@ -5,6 +5,7 @@
   lib,
   config,
   pkgs,
+  nixvim,
   ...
 }: {
   imports = [
@@ -41,39 +42,49 @@
   };
 
   home = {
-    username = "YOUR_USERBANE";
+    username = "YOUR_USERNAME";
     homeDirectory = "/home/YOUR_USERNAME";
   };
+  stylix.targets.librewolf.profileNames = ["YOUR_USERNAME"];
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-      btop
-      neovim
-      uv
       vscode
-      code-cursor
       gimp
+
       lua
+      uv
       go
-      qemu
-      rofi-power-menu
       rustc
+
+      qemu
+      arandr
+      rofi-power-menu
       quickemu
       discord
       libreoffice
-      arandr
+      steam
   ];
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
+  # NOTE: terminal emulator alternative
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+        custom-shader = "/etc/nixos/home-manager/resources/ghostty_shader.glsl";
+        window-padding-x = 10;
+        window-padding-y = 10;
+        window-decoration = "none";
+    };
+  };
+
   # ==== non nix dotfiles ====
   # dunst
   xdg.configFile."dunst/dunstrc".source = ./resources/dunstrc;
-  # neovim
-  xdg.configFile."nvim".source = ./nvim;
-  # ====
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

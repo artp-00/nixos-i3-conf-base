@@ -7,7 +7,6 @@
         vim-airline
         fzf-vim
         vim-trailing-whitespace
-        # vim_current_word
         vim-surround
         nerdtree
         vim-gitgutter
@@ -39,7 +38,5 @@
         nnoremap <Leader>ff :Files<CR>
         nnoremap <Leader>fg :Rg<CR>
     '';
-    # nnoremap <C-n> :NERDTree<CR>
-    # nnoremap <C-f> :NERDTreeFind<CR>
   };
 }
