@@ -242,7 +242,7 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     image = ./home-manager/resources/.background-image;
     # Background image
-    # James Abbott McNeill Whistler's Nocturne, Blue and Silver: Battersea Reach.
+    # Mark Rothko's No 2. [untilted] collection
     polarity = "dark";
   };
 
