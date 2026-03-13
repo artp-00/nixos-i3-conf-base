@@ -1,11 +1,17 @@
 ## Install:
+clone repository
+
 remove ./images
 
 replace your username, password and hostname
 
 create a git repository (for versionning with flakes)
 
-copy content of ./nixos to /etc/nixos then rebuild using
+copy content of repository to /etc/nixos and handle permissions
+
+create a git repository (for versionning with flakes)
+
+rebuild using
 
 ``bash
   sudo nixos-rebuild switch --flake /etc/nixos#YOUR_USERNAME
