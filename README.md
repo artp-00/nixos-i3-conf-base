@@ -8,10 +8,12 @@ Opinionated nixos base configuration featuring:
   - Declarative VSCode, Vim and Neovim configuration using NixVim
   - Declarative Nvidia driver configuration
 
-Based on: https://github.com/Misterio77/nix-starter-configs
 
 ![image_1](./images/1.png)
 ![image_2](./images/2.png)
+
+Based on: https://github.com/Misterio77/nix-starter-configs
+Background image: https://rothkomuseum.com/en/rothko-museum-to-unveil-a-new-exhibition-of-selected-artworks-from-its-collection/
 
 ## Install:
 clone repository
