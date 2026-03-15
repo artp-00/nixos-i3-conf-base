@@ -13,6 +13,7 @@ Opinionated nixos base configuration featuring:
 ![image_2](./images/2.png)
 
 Based on: https://github.com/Misterio77/nix-starter-configs
+
 Background image: https://rothkomuseum.com/en/rothko-museum-to-unveil-a-new-exhibition-of-selected-artworks-from-its-collection/
 
 ## Install:
@@ -30,6 +31,6 @@ create a git repository (for versionning with flakes)
 
 rebuild using
 
-``bash
+```bash
   sudo nixos-rebuild switch --flake /etc/nixos#YOUR_USERNAME
-``
+```
